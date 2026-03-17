@@ -1,11 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { tracks } from "@/lib/catalog";
+import { useEffect, useMemo, useState } from "react";
+import type { Track } from "@/lib/types";
 
 export default function LibraryPage() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState("All");
+  const [tracks, setTracks] = useState<Track[]>([]);
+
+  useEffect(() => {
+    fetch("/api/tracks").then((r) => r.json()).then((json) => setTracks(json.data ?? []));
+  }, []);
 
   const genres = ["All", ...new Set(tracks.map((t) => t.genre))];
 
@@ -15,12 +20,12 @@ export default function LibraryPage() {
       const genreHit = genre === "All" || t.genre === genre;
       return hit && genreHit;
     });
-  }, [query, genre]);
+  }, [query, genre, tracks]);
 
   return (
     <main className="mx-auto max-w-6xl px-5 py-10">
       <h1 className="text-3xl font-semibold">Library</h1>
-      <p className="mt-2 text-sm text-[var(--muted)]">Filter by genre, moods, and metadata like a sync-ready catalog.</p>
+      <p className="mt-2 text-sm text-[var(--muted)]">Filter by genre, moods, and sync metadata.</p>
 
       <div className="mt-6 grid gap-3 md:grid-cols-3">
         <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search tracks, moods, artist..." className="lux-border rounded-xl px-4 py-3 outline-none" />

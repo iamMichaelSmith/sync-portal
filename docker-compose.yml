@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  sync-portal:
+    build: .
+    image: sync-portal:latest
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - STORAGE_PROVIDER=local
+      - BASE_URL=http://localhost:3000
+      - LINK_TTL_HOURS=168
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { playlists, tracks } from "@/lib/catalog";
 
 export default function Home() {
   return (
@@ -11,19 +10,20 @@ export default function Home() {
         </h1>
         <p className="mt-5 max-w-2xl text-[var(--muted)]">
           Upload and organize masters, WAVs, MP3s, and stems. Build curated playlists, share private links,
-          and pitch faster with one-stop metadata and clearance-ready contact details.
+          and pitch faster with one-stop metadata and clearance-ready details.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link className="gold-btn" href="/library">Open Library</Link>
           <Link className="rounded-full border border-[var(--line)] px-4 py-2" href="/playlists">View Playlists</Link>
+          <Link className="rounded-full border border-[var(--line)] px-4 py-2" href="/admin">Admin Console</Link>
         </div>
       </section>
 
       <section className="mt-8 grid gap-4 md:grid-cols-4">
-        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">{tracks.length}</p><p className="text-sm text-[var(--muted)]">Tracks Loaded</p></div>
-        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">{playlists.length}</p><p className="text-sm text-[var(--muted)]">Pitch Playlists</p></div>
-        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">100%</p><p className="text-sm text-[var(--muted)]">Master Rights Controlled</p></div>
-        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">1.3B</p><p className="text-sm text-[var(--muted)]">Streams Credibility</p></div>
+        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">API</p><p className="text-sm text-[var(--muted)]">Track + Playlist CRUD</p></div>
+        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">S3</p><p className="text-sm text-[var(--muted)]">Storage target architecture</p></div>
+        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">Docker</p><p className="text-sm text-[var(--muted)]">Container-ready runtime</p></div>
+        <div className="lux-border rounded-2xl p-5"><p className="text-3xl font-bold">CI</p><p className="text-sm text-[var(--muted)]">Lint, build, smoke tests</p></div>
       </section>
     </main>
   );
