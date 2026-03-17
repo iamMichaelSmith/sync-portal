@@ -43,9 +43,10 @@ This system gives Blakmarigold long-term control over data, branding, and workfl
 ### Data
 - Postgres (Supabase now, can migrate to AWS RDS later)
 - Core tables: tracks, assets, metadata, playlists, playlist_tracks, contacts, pitches, activity_events
+- Vector database is not required for core product functionality
 
 ### Media Storage
-- AWS S3 private buckets
+- AWS S3 private buckets (primary storage for all media assets)
 - Signed URLs for secure stream/download
 - CloudFront in front of S3 for performance
 

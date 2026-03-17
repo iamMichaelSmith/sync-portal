@@ -57,10 +57,10 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
 1. **Database schema**
    - tracks, assets, playlists, playlist_tracks, contacts, pitches, listen_events
-2. **Media storage**
-   - Option A: Supabase Storage
-   - Option B: AWS S3 (+ CloudFront)
-3. **Admin ingest**
+2. **Media storage (primary)**
+   - AWS S3 (+ CloudFront) for MP3/WAV/stems and secure signed delivery
+   - Note: vector DB is optional and only for advanced AI similarity search, not file storage
+3. **Admin ingest
    - bulk CSV import for metadata
    - upload MP3/WAV/stems with validation
 4. **Private sharing**
